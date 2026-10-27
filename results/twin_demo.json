@@ -1,0 +1,162 @@
+{
+  "patient": {
+    "egfr0": 58,
+    "upcr0": 1.8,
+    "weight": 72,
+    "age": 36,
+    "april_rel": 1.3,
+    "gd_rel": 1.5,
+    "fhr5_rel": 1.6,
+    "c3_int": 3,
+    "c4d": 0,
+    "M": 1,
+    "E": 1,
+    "S": 1,
+    "T": 0,
+    "C": 0,
+    "name": "Patient A (synthetic)"
+  },
+  "true_eta": [
+    0.8,
+    0.9,
+    0.3,
+    0.2,
+    0.4
+  ],
+  "estimated_eta": {
+    "f_ind_gd": [
+      0.7468921783963793,
+      0.5253600884382218
+    ],
+    "w_comp": [
+      0.036645232130089786,
+      0.9988765313055292
+    ],
+    "phi": [
+      -0.6147873415223285,
+      0.9138935178204314
+    ],
+    "kD": [
+      -0.4597802252014534,
+      0.9176071027215715
+    ],
+    "prog": [
+      0.6199056301413612,
+      0.8415962110843508
+    ]
+  },
+  "mechanism_estimate": {
+    "APRIL/BAFF-independent Gd-IgA1 fraction": 0.14550634104109944,
+    "complement share of glomerular injury": 0.6785185682970631,
+    "terminal-pathway (C5) share of injury": 0.5279140726352831,
+    "lectin-pathway share of initiation": 0.06988023454692091,
+    "AP amplification loop gain": 0.8317136419920447,
+    "reversible share of proteinuria": 0.8399432975811308,
+    "deposit clearance half-life (days)": 26.658626001311582,
+    "progression multiplier": 1.5652725969382906
+  },
+  "forecast_personalised": {
+    "Continue sibeprenlimab": {
+      "UPCR_1y_median": 0.9355932087965821,
+      "eGFR_1y_median": 53.298118987852845,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 1.1172007972014544,
+      "eGFR_5y_median": 32.67027589928942,
+      "P_kidney_failure_5y": 0.005,
+      "UPCR_10y_median": 1.7089995905970916,
+      "eGFR_10y_median": 14.734623529057224,
+      "P_kidney_failure_10y": 0.505
+    },
+    "Add iptacopan at 6 mo": {
+      "UPCR_1y_median": 0.5630282211345002,
+      "eGFR_1y_median": 55.22062450038055,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 0.6695715211201785,
+      "eGFR_5y_median": 41.64276251045503,
+      "P_kidney_failure_5y": 0.0,
+      "UPCR_10y_median": 0.9106852543524241,
+      "eGFR_10y_median": 26.80023661417754,
+      "P_kidney_failure_10y": 0.19
+    },
+    "Switch to iptacopan at 6 mo": {
+      "UPCR_1y_median": 0.7639153725939305,
+      "eGFR_1y_median": 54.373323907989345,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 1.1095724594964091,
+      "eGFR_5y_median": 34.50399388361805,
+      "P_kidney_failure_5y": 0.015,
+      "UPCR_10y_median": 1.5952259652824416,
+      "eGFR_10y_median": 16.478968055262875,
+      "P_kidney_failure_10y": 0.445
+    },
+    "Stop therapy at 6 mo": {
+      "UPCR_1y_median": 1.3820990611204742,
+      "eGFR_1y_median": 51.43589994147097,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 2.3137869274681147,
+      "eGFR_5y_median": 19.675520069210044,
+      "P_kidney_failure_5y": 0.235,
+      "UPCR_10y_median": 3.386940261664182,
+      "eGFR_10y_median": 3.408443936880008,
+      "P_kidney_failure_10y": 0.98
+    }
+  },
+  "forecast_covariates_only": {
+    "Continue sibeprenlimab": {
+      "UPCR_1y_median": 0.8161467598734081,
+      "eGFR_1y_median": 55.26813891514867,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 0.9010650118803899,
+      "eGFR_5y_median": 39.5641685825947,
+      "P_kidney_failure_5y": 0.005,
+      "UPCR_10y_median": 1.0643031184401734,
+      "eGFR_10y_median": 24.643889104897994,
+      "P_kidney_failure_10y": 0.17
+    },
+    "Add iptacopan at 6 mo": {
+      "UPCR_1y_median": 0.45291717318860547,
+      "eGFR_1y_median": 57.09390542326351,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 0.4919055895797807,
+      "eGFR_5y_median": 46.83830611866812,
+      "P_kidney_failure_5y": 0.0,
+      "UPCR_10y_median": 0.5779171624289704,
+      "eGFR_10y_median": 36.21780575978906,
+      "P_kidney_failure_10y": 0.05
+    },
+    "Switch to iptacopan at 6 mo": {
+      "UPCR_1y_median": 0.6809243190194876,
+      "eGFR_1y_median": 56.09878418876927,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 0.9395466917486974,
+      "eGFR_5y_median": 39.7564084606401,
+      "P_kidney_failure_5y": 0.005,
+      "UPCR_10y_median": 1.1533437719565076,
+      "eGFR_10y_median": 24.88617459517764,
+      "P_kidney_failure_10y": 0.165
+    },
+    "Stop therapy at 6 mo": {
+      "UPCR_1y_median": 1.3383193243303637,
+      "eGFR_1y_median": 53.2241986100273,
+      "P_kidney_failure_1y": 0.0,
+      "UPCR_5y_median": 2.045832404019966,
+      "eGFR_5y_median": 25.326981844389408,
+      "P_kidney_failure_5y": 0.11,
+      "UPCR_10y_median": 2.629261619131478,
+      "eGFR_10y_median": 8.096096569653735,
+      "P_kidney_failure_10y": 0.8
+    }
+  },
+  "truth_eGFR_5y": {
+    "Continue sibeprenlimab": 38.081048863260165,
+    "Add iptacopan at 6 mo": 48.11979579315424,
+    "Switch to iptacopan at 6 mo": 42.7898566712282,
+    "Stop therapy at 6 mo": 23.96998183213874
+  },
+  "truth_kidney_failure_10y": {
+    "Continue sibeprenlimab": 0.0,
+    "Add iptacopan at 6 mo": 0.0,
+    "Switch to iptacopan at 6 mo": 0.0,
+    "Stop therapy at 6 mo": 1.0
+  }
+}

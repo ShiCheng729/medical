@@ -1,0 +1,72 @@
+[
+  {
+    "strategy": "Supportive care",
+    "UPCR reduction vs SoC at 9 mo": 0.0,
+    "Gd-IgA1 vs baseline": 1.0,
+    "mesangial deposits vs baseline": 1.0,
+    "C3 deposition vs baseline": 1.0,
+    "C5b-9 vs baseline": 1.0,
+    "eGFR slope yr1-2 (mL/min/yr)": -8.073370883484234,
+    "kidney failure-free at 10 y": 0.2666666666666667
+  },
+  {
+    "strategy": "Sibeprenlimab 400 mg Q4W",
+    "UPCR reduction vs SoC at 9 mo": 0.47520805860732784,
+    "Gd-IgA1 vs baseline": 0.401680864750003,
+    "mesangial deposits vs baseline": 0.3804080279449377,
+    "C3 deposition vs baseline": 0.3817847494976339,
+    "C5b-9 vs baseline": 0.3821823554157238,
+    "eGFR slope yr1-2 (mL/min/yr)": -5.216363455828417,
+    "kidney failure-free at 10 y": 0.6566666666666667
+  },
+  {
+    "strategy": "Atacicept 150 mg QW",
+    "UPCR reduction vs SoC at 9 mo": 0.43281022384037005,
+    "Gd-IgA1 vs baseline": 0.4955430851455072,
+    "mesangial deposits vs baseline": 0.4346615863036617,
+    "C3 deposition vs baseline": 0.4357422134724331,
+    "C5b-9 vs baseline": 0.4360685052653981,
+    "eGFR slope yr1-2 (mL/min/yr)": -5.507146370001294,
+    "kidney failure-free at 10 y": 0.6266666666666667
+  },
+  {
+    "strategy": "Iptacopan 200 mg BID",
+    "UPCR reduction vs SoC at 9 mo": 0.3919774345536646,
+    "Gd-IgA1 vs baseline": 1.0,
+    "mesangial deposits vs baseline": 1.0,
+    "C3 deposition vs baseline": 0.077576925753451,
+    "C5b-9 vs baseline": 0.07757692575382648,
+    "eGFR slope yr1-2 (mL/min/yr)": -6.003036805623194,
+    "kidney failure-free at 10 y": 0.5900000000000001
+  },
+  {
+    "strategy": "Ravulizumab Q8W",
+    "UPCR reduction vs SoC at 9 mo": 0.3260167397773184,
+    "Gd-IgA1 vs baseline": 1.0,
+    "mesangial deposits vs baseline": 1.0,
+    "C3 deposition vs baseline": 1.0,
+    "C5b-9 vs baseline": 0.010084327487680593,
+    "eGFR slope yr1-2 (mL/min/yr)": -6.402501728331316,
+    "kidney failure-free at 10 y": 0.5233333333333333
+  },
+  {
+    "strategy": "Narsoplimab 12-wk course",
+    "UPCR reduction vs SoC at 9 mo": 0.007880355525988758,
+    "Gd-IgA1 vs baseline": 1.0,
+    "mesangial deposits vs baseline": 1.0,
+    "C3 deposition vs baseline": 0.9999122225644594,
+    "C5b-9 vs baseline": 0.9998895445078246,
+    "eGFR slope yr1-2 (mL/min/yr)": -8.117093865274695,
+    "kidney failure-free at 10 y": 0.2666666666666667
+  },
+  {
+    "strategy": "Sibeprenlimab + iptacopan",
+    "UPCR reduction vs SoC at 9 mo": 0.6388873729386204,
+    "Gd-IgA1 vs baseline": 0.401680864750003,
+    "mesangial deposits vs baseline": 0.3804080279449377,
+    "C3 deposition vs baseline": 0.029617687166164957,
+    "C5b-9 vs baseline": 0.02964853221132954,
+    "eGFR slope yr1-2 (mL/min/yr)": -4.177495859135138,
+    "kidney failure-free at 10 y": 0.79
+  }
+]
