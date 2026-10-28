@@ -77,6 +77,14 @@ clearance and progression.
 
 Full references, and notes on which numbers are approximate, are in `igan_twin/trials.py`.
 
+### Prospective prediction: zigakibart (Novartis) and the BEYOND phase 3
+
+`python -m igan_twin zigakibart` fits zigakibart's potency to its phase 1/2 IgA/Gd-IgA1 suppression
+only. It then checks the model against the phase 1/2 proteinuria curve, which is not used in the
+fit, and predicts the not-yet-reported BEYOND trial (600 mg SC Q2W vs placebo; week-40 UPCR,
+week-104 eGFR). The result includes posterior and trial-sampling uncertainty. Output is in
+`results/ZIGAKIBART.md` (Chinese) and `results/fig_zigakibart.png`.
+
 ## Quick start
 
 ```bash

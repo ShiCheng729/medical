@@ -240,3 +240,80 @@ def twin_figure(fit, fc, truth_sim, path, horizon_years=5):
                  x=0.01, ha="left", fontsize=12, fontweight="semibold", color=TEXT)
     fig.tight_layout()
     return _save(fig, path)
+
+
+def zigakibart_figure(res: dict, path):
+    """Phase 1/2 validation and virtual BEYOND prediction for zigakibart."""
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8.6))
+    ax = axes[0, 0]
+    ph = res["phase12"]
+    tw = np.array(ph["t_weeks"])
+    ax.plot(tw, ph["upcr_mean_change_pct"], color=SERIES[0], label="UPCR, model (mean)")
+    ax.plot(tw, ph["gd_gm_change_pct"], color=SERIES[1], label="Gd-IgA1, model (GM)")
+    obs = ph["observed_upcr_mean_change_pct"]
+    ax.scatter([float(k) for k in obs], list(obs.values()), s=56, facecolor=SURFACE, edgecolor=SERIES[0], lw=1.8,
+               zorder=5, label="UPCR, published (not fitted)")
+    ax.scatter([52], [-74], s=56, marker="D", facecolor=SURFACE, edgecolor=SERIES[1], lw=1.8, zorder=5,
+               label="Gd-IgA1, published (fitted)")
+    ax.axhline(0, color=MUTED, lw=1)
+    ax.set_title("Phase 1/2 (single arm, 600 mg SC Q2W)", loc="left")
+    ax.set_xlabel("Weeks")
+    ax.set_ylabel("Change from baseline (%)")
+    ax.legend(loc="upper right")
+
+    ax = axes[0, 1]
+    c = res["curves"]
+    t = np.array(c["t_weeks"])
+    band = np.array(c["zig_band"])
+    ax.fill_between(t, 100 * (band[0] - 1), 100 * (band[2] - 1), color=SERIES[0], alpha=0.15, lw=0,
+                    label="zigakibart 90% interval")
+    for name, color in (("placebo", NEUTRAL), ("zigakibart 600 mg Q2W", SERIES[0])):
+        y = 100 * (np.array(c["upcr_gm"][name]) - 1)
+        ax.plot(t, y, color=color, label=name)
+    ax.axvline(40, color=MUTED, lw=1, ls=":")
+    ax.annotate("week 40\nprimary endpoint", (40, 2), xytext=(4, 0), textcoords="offset points", fontsize=7, color=TEXT2)
+    ax.axhline(0, color=MUTED, lw=1)
+    ax.set_title("Virtual BEYOND: 24-h UPCR (GM change)", loc="left")
+    ax.set_xlabel("Weeks")
+    ax.set_ylabel("Change from baseline (%)")
+    ax.legend(loc="lower left")
+
+    ax = axes[1, 0]
+    rows = res["beyond_point"][1:]
+    names = [r["arm"] for r in rows]
+    vals = [100 * r["placebo-adjusted reduction wk40"] for r in rows]
+    y = np.arange(len(rows))[::-1]
+    ax.barh(y, vals, height=0.55, color=[SERIES[0], SERIES[1], SERIES[2], SERIES[3], SERIES[6]][: len(rows)],
+            edgecolor=SURFACE, lw=2)
+    iv = res["beyond_interval"]["placebo-adjusted reduction wk40"]
+    zi = names.index("zigakibart 600 mg Q2W")
+    ax.errorbar([100 * iv[1]], [y[zi]], xerr=[[100 * (iv[1] - iv[0])], [100 * (iv[2] - iv[1])]], fmt="none",
+                ecolor=TEXT, capsize=4, lw=2.2)
+    pv = res["beyond_interval"]["placebo-adjusted reduction wk40, trial-level predictive"]
+    ax.errorbar([100 * pv[1]], [y[zi] + 0.33], xerr=[[100 * (pv[1] - pv[0])], [100 * (pv[2] - pv[1])]], fmt="none",
+                ecolor=TEXT2, capsize=3, lw=1)
+    for yi, v in zip(y, vals):
+        x = max(v, 100 * pv[2]) if yi == y[zi] else v
+        ax.annotate(f"{v:.0f}%", (x, yi), xytext=(6, 0), textcoords="offset points", fontsize=8, color=TEXT, va="center")
+    ax.set_yticks(y, names)
+    ax.grid(axis="y", visible=False)
+    ax.grid(axis="x", visible=False)
+    ax.set_xlabel("Placebo-adjusted UPCR reduction at week 40 (%)\n"
+                  "zigakibart whiskers: model 90% (thick), trial-level predictive 90% (thin)")
+    ax.set_title("Same virtual BEYOND patients, other drugs", loc="left")
+
+    ax = axes[1, 1]
+    for name, color in (("placebo", NEUTRAL), ("zigakibart 600 mg Q2W", SERIES[0])):
+        ax.plot(t, c["egfr_change"][name], color=color, label=name)
+        ax.annotate(f"{c['egfr_change'][name][-1]:+.1f}", (t[-1], c["egfr_change"][name][-1]), xytext=(4, 0),
+                    textcoords="offset points", fontsize=8, color=TEXT2, va="center")
+    ax.axhline(0, color=MUTED, lw=1)
+    ax.set_xlim(0, t[-1] * 1.1)
+    ax.set_title("Virtual BEYOND: eGFR change (key secondary, week 104)", loc="left")
+    ax.set_xlabel("Weeks")
+    ax.set_ylabel("mL/min/1.73 m²")
+    ax.legend(loc="lower left")
+    fig.suptitle("Zigakibart (anti-APRIL): digital-twin prediction of the phase 3 BEYOND trial",
+                 x=0.01, ha="left", fontsize=12, fontweight="semibold", color=TEXT)
+    fig.tight_layout()
+    return _save(fig, path)

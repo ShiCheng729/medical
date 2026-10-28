@@ -101,3 +101,14 @@ def test_twin_fit_recovers_complement_signal():
     assert fit.eta[1] > 0.3  # complement share above population typical
     fc = forecast(fit, {"ipt": history, "none": []}, years=2, n_samples=30)
     assert np.median(fc.bands("ipt", "UPCR")[1][-1]) < np.median(fc.bands("none", "UPCR")[1][-1])
+
+
+def test_zigakibart_fit_hits_biomarker_target_and_acts_on_april():
+    from igan_twin.pk import ZIGAKIBART_600_Q2W
+    from igan_twin.zigakibart import fit_ec50
+
+    ec50, gd = fit_ec50(P, target=0.35, n=20)
+    assert gd == pytest.approx(0.35, rel=0.05)
+    sim = one([ZIGAKIBART_600_Q2W], params=P.with_values(ec50_ziga=ec50))
+    assert sim.out["e_APRIL"][-1, 0] > 0.8
+    assert sim.out["C3"][-1, 0] < 1.0  # downstream complement falls with deposits

@@ -53,6 +53,9 @@ class ModelParams:
     # ------------------------------------------------------------------
     ec50_sib: float = 2.0
     """In-vivo sibeprenlimab concentration (mg/L) giving 50% APRIL neutralisation."""
+    ec50_ziga: float = 1.0
+    """In-vivo zigakibart EC50 (mg/L); fitted to phase 1/2 IgA/Gd-IgA1 data by
+    igan_twin.zigakibart, not by the trial calibration."""
     ec50_ata: float = 1.0
     """In-vivo atacicept concentration (mg/L) giving 50% APRIL and BAFF neutralisation."""
     f_ind_gd: float = 0.25

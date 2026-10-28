@@ -48,6 +48,16 @@ DRUGS: dict[str, DrugPK] = {
         targets={"APRIL": (2.0, 1.0, 1.0)},
         calibrated_ec50="ec50_sib",
     ),
+    "zigakibart": DrugPK(
+        "zigakibart",
+        "humanised anti-APRIL mAb (BION-1301)",
+        V=5.5,
+        CL=0.25,  # t1/2 ~15 d assumed (typical IgG); exposure enters via the fitted EC50
+        ka=0.25,
+        F_sc=0.7,
+        targets={"APRIL": (1.0, 1.0, 1.0)},
+        calibrated_ec50="ec50_ziga",
+    ),
     "atacicept": DrugPK(
         "atacicept",
         "TACI-Fc fusion, neutralises APRIL and BAFF",
@@ -163,6 +173,7 @@ def sibeprenlimab_iv(mg_per_kg: float) -> Regimen:
     return Regimen("sibeprenlimab", dose_mg_per_kg=mg_per_kg, interval_days=28, route="iv")
 
 
+ZIGAKIBART_600_Q2W = Regimen("zigakibart", dose_mg=600, interval_days=14, route="sc")
 SIBEPRENLIMAB_SC_400 = Regimen("sibeprenlimab", dose_mg=400, interval_days=28, route="sc")
 ATACICEPT_150_QW = Regimen("atacicept", dose_mg=150, interval_days=7, route="sc")
 IPTACOPAN_200_BID = Regimen("iptacopan", dose_mg=200, interval_days=0.5, route="oral")

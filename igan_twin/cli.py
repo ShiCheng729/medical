@@ -6,6 +6,7 @@ calibrate   fit population parameters to published trial read-outs
 trials      re-run the virtual trial replicas and plot them
 project     10-year strategy comparison + responder analysis
 twin-demo   personalise a twin from synthetic follow-up data and forecast
+zigakibart  fit zigakibart to phase 1/2 data and predict the BEYOND phase 3 trial
 all         every step above, then write results/REPORT.md
 """
 
@@ -127,6 +128,17 @@ def cmd_twin_demo(args, params=None):
     return summary
 
 
+def cmd_zigakibart(args):
+    from .zigakibart import render_markdown, run
+
+    res = run(n_draws=args.draws)
+    plotting.zigakibart_figure(res, OUT / "fig_zigakibart.png")
+    (OUT / "ZIGAKIBART.md").write_text(render_markdown(res))
+    print(json.dumps(res["beyond_point"], indent=1))
+    print(json.dumps(res["beyond_interval"], indent=1))
+    return res
+
+
 def write_report(params, cal_table, proj_table, twin):
     from .report import render
 
@@ -147,6 +159,8 @@ def main(argv=None):
     p.add_argument("--n", type=int, default=300)
     d = sub.add_parser("twin-demo")
     d.add_argument("--samples", type=int, default=200)
+    z = sub.add_parser("zigakibart")
+    z.add_argument("--draws", type=int, default=60, help="posterior parameter draws for the BEYOND interval")
     a = sub.add_parser("all")
     a.add_argument("--skip-calibration", action="store_true")
     a.add_argument("--n", type=int, default=200)
@@ -163,6 +177,8 @@ def main(argv=None):
         cmd_project(args)
     elif args.cmd == "twin-demo":
         cmd_twin_demo(args)
+    elif args.cmd == "zigakibart":
+        cmd_zigakibart(args)
     elif args.cmd == "all":
         if not args.skip_calibration:
             cmd_calibrate(argparse.Namespace(n=60, max_nfev=args.max_nfev))
